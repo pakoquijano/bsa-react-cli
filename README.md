@@ -1,12 +1,12 @@
 ## Instalation
 ```
-npm install -g bsa-cli
+npm install -g bsa-react-cli
 ```
 
 This will add a bsa-cli into your terminal, command line and you will be able to call it from your project root.
  
 ######Available comands:
-Type react-cli --help
+Type bsa-cli --help
 
 ```
   Options:

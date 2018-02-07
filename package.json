@@ -1,8 +1,8 @@
 {
-  "name": "bsa-cli-tool",
+  "name": "bsa-react-cli",
   "version": "0.0.2",
   "description": "BSA Node CLI to generate and automate common tasks in react. Support component generation, containers, store features, Easily configurable to your own needs.",
-  "repository": "https://github.com/pakoquijano/react-bash-scripts",
+  "repository": "https://github.com/pakoquijano/bsa-react-cli",
   "main": "./build/index.js",
   "scripts": {
     "gitCommit": "git add . && git commit -m'auto commit npm publish/version update script' --allow-empty",
