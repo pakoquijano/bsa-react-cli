@@ -10,26 +10,22 @@ import figlet from 'figlet';
 import shell from 'shelljs';
 
 // local libs
-import createModule from './module/createModule';
-import createDuckModule from './ducks/createDuckule';
+
+import createDuck from './ducks/createDuck';
 import createComponent from './component/createComponent';
-import createReducerTest from './test/createReducerTest';
 import constants from './constants';
+import { create } from "domain";
 
 const types = [
-	constants.types.MODULE,
 	constants.types.DUCKS,
 	constants.types.COMPONENT,
-	constants.types.ATOM,
-	constants.types.MOLECULE,
-	constants.types.ORGANISM,
-	constants.types.DUMB,
+	constants.types.STATELESS,
 	constants.types.PATH,
-	constants.types.TEST_REDUCER,
+	constants.types.CONTAINER,
 ];
 console.log(
 	chalk.green(
-		figlet.textSync('ReactJS CLI'),
+		figlet.textSync('BSA MyST CLI'),
 	),
 );
 
@@ -38,15 +34,11 @@ const pjson = require('../package.json');
 program
 	.version(pjson.version)
 	.usage('with or without arguments :)')
-	.option('-l, --module    [module]', 'name of your Module')
-	.option('-q, --duckule   [module]', 'name of your Module')
 	.option('-c, --component [component]', 'name of your Component')
-	.option('-a, --atom      [atom]', 'name of your Atom')
-	.option('-m, --molecule  [molecule]', 'name of your Molecule')
-	.option('-o, --organism  [organism]', 'name of your Organism')
-	.option('-d, --dumb      [organism]', 'name of your dumb component')
-	.option('-p, --path      [path]', 'path for the generated structure [module|component]')
-	.option('-t, --rtest     [rtest]', 'name of reducer for test file e.g. User -> UserReducerTest')
+	.option('-s, --stateless [stateless]', 'name of your dumb component')
+	.option('-o, --container [container]', 'name of your container')
+	.option('-d, --ducks 	 [ducks]', 'name of the duck feature')
+	.option('-p, --path      [path]', 'path for the generated structure [component]')
 	.parse(process.argv);
 
 
@@ -63,13 +55,13 @@ const parseValues = co(function *() {
 	
 	if (counter === types.length || (counter === types.length - 1 && config[constants.types.PATH])) {
 		// if no arguments or only path provided run prompts
-		config[constants.types.MODULE] = yield prompt(`Enter the name of ${constants.types.MODULE} *: `);
-		if (!config[constants.types.MODULE] || '' === config[constants.types.MODULE]) {
+		config[constants.types.COMPONENT] = yield prompt(`Enter the name of ${constants.types.COMPONENT} *: `);
+		if (!config[constants.types.COMPONENT] || '' === config[constants.types.COMPONENT]) {
 			console.log(chalk.bold.red(`The name is required`));
 			process.exit(0);
 		}
 		if (!config[constants.types.PATH]) {
-			config[constants.types.PATH] = yield prompt(chalk.bold.cyan(`Optional path, we recommend to leave blank(will default to /src/[modules|components]):`));
+			config[constants.types.PATH] = yield prompt(chalk.bold.cyan(`Optional path, we recommend to leave blank(will default to /src/[components]):`));
 		}
 	}
 	
@@ -85,20 +77,16 @@ parseValues.then((values) => handleValues(values))
 			   process.exit(0);
 		   });
 
-const handleValues = ({ component, path, module, atom, molecule, organism, dumb, duckule, rtest, ...args }) => {
-	
-	module && createModule(module, path);
+const handleValues = ({ component, path, stateless, container, ducks, ...args }) => {
 	component && createComponent(component, path);
-	dumb && createComponent(dumb, path, undefined, true);
-	molecule && createComponent(molecule, path, 'molecules');
-	atom && createComponent(atom, path, 'atoms');
-	organism && createComponent(organism, path, 'organisms');
-	rtest && createReducerTest(rtest, path);
-	duckule && createDuckModule(duckule, path);
+	container && createComponent(container, path, false, true);
+	stateless && createComponent(stateless, path, true);
+	ducks && createDuck(ducks, path);
 	chalk.reset();
+	/* optional to run tests 
 	if (shell.exec('npm run test').code !== 0) {
 		shell.echo('Can not run tests. Please run tests manually!');
-	}
+	} */
 	
 	console.log(chalk.bold.green('Get a cofee and enjoy the time you saved :)!'));
 	process.exit(0);

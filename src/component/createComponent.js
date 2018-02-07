@@ -4,32 +4,22 @@ import createFile from '../utils/createFile';
 import indexTemplate from '../templates/indexComponent';
 import classTemplate from '../templates/classTemplate';
 import dumpTemplate from '../templates/dumpTemplate';
-import componentTest from '../templates/componentTest';
-import snapshotTest from '../templates/snapshotTest';
+import containerTemplate from '../templates/containerTemplate';
+import messagesTemplate from '../templates/messagesTemplate';
+import stylesTemplate from '../templates/stylesTemplate'
 
-const dirs = [
-	'__tests__'
-];
-
-const handle = (moduleName, path, subDir = undefined, dumb = false) => {
+const handle = (moduleName, path, dumb = false, container = false) => {
 	if (isEmpty(path)) {
-		path = 'src/components';
+		path = !container ? 'src/components' : 'src/containers';
 	}
-	if (!isEmpty(subDir)) {
-		path += `/${subDir}`;
-	}
-
 	path += `/${moduleName}`;
-
-	dirs.forEach((directory) => {
-		console.log(`Creating ${path}/${directory}`);
-		shell.mkdir('-p', `${path}/${directory}`);
-	});
+	console.log(`Creating ${path}`);
+	shell.mkdir('-p', `${path}`);
 	createFile(indexTemplate(moduleName), `${path}/index.js`);
-	dumb && createFile(dumpTemplate(moduleName), `${path}/${moduleName}.js`);
-	!dumb && createFile(classTemplate(moduleName), `${path}/${moduleName}.js`);
-	createFile(componentTest(moduleName), `${path}/__tests__/${moduleName}Test.js`);
-	createFile(snapshotTest(moduleName), `${path}/__tests__/${moduleName}SnapshotTest.js`);
+	dumb && createFile(dumpTemplate(moduleName), `${path}/${moduleName}.jsx`);
+	if (!dumb) container ? createFile(containerTemplate(moduleName),`${path}/container.js`) : createFile(classTemplate(moduleName), `${path}/${moduleName}.jsx`);
+	!container && createFile(messagesTemplate(moduleName), `${path}/messages.js`);
+	!container && createFile(stylesTemplate(moduleName), `${path}/style.less`);
 };
 
 export default handle;

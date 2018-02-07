@@ -1,7 +1,12 @@
 const getTemplate = (name) => {
-	return (`// @flow
+	return (`
 import React from 'react';
 import PropTypes from 'prop-types';
+import messages from './messages';
+import './styles.less';
+
+const propTypes = {};
+const defaultProps = {};
 
 const ${name} = () => {
 	return (
@@ -9,8 +14,8 @@ const ${name} = () => {
 	);
 };
 
-${name}.defaultProps = {};
-${name}.propTypes = {};
+${name}.defaultProps = defaultProps;
+${name}.propTypes = propTypes;
 
 export default ${name};
 

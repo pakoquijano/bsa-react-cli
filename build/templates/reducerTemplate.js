@@ -1,12 +1,17 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+
+var _constantCase = require('constant-case');
+
+var _constantCase2 = _interopRequireDefault(_constantCase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var getTemplate = function getTemplate(name) {
-	var nameLower = name.toLowerCase();
-	var nameUpper = name.toUpperCase();
-	return "// @flow\nimport { " + nameLower + "Actions } from '../constants/" + name + "Constants';\n\n\nexport const initialState = {\n};\n\nconst " + nameLower + "Reducer = (state: Object = initialState, action: Object) => {\n\tswitch (action.type) {\n\t\tdefault:\n\t\t\treturn state;\n\t}\n};\n\nexport default " + nameLower + "Reducer;\n\n";
+  return 'import types from \'./types\';\n\nexport const initialState = {};\n\nexport default function (state = initialState, action) {\n  switch (action.type) {\n    case types.REQUEST_' + (0, _constantCase2.default)(name) + ': {\n      return {\n        ...state\n      }\n    }\n    case types.REQUEST_' + (0, _constantCase2.default)(name) + '_SUCCESS: {\n      return {\n        ...state\n      }\n    }\n    case types.REQUEST_' + (0, _constantCase2.default)(name) + '_ERROR: {\n      return {\n        ...state\n      }\n    }\n    default:\n    return state;\n  }\n}\n';
 };
 
 exports.default = getTemplate;

@@ -1,22 +1,30 @@
+import constantCase from 'constant-case';
 const getTemplate = (name) => {
-	const nameLower = name.toLowerCase();
-	const nameUpper = name.toUpperCase();
-	return (`// @flow
-import { ${nameLower}Actions } from '../constants/${name}Constants';
+	return (`import types from './types';
 
+export const initialState = {};
 
-export const initialState = {
-};
-
-const ${nameLower}Reducer = (state: Object = initialState, action: Object) => {
-	switch (action.type) {
-		default:
-			return state;
-	}
-};
-
-export default ${nameLower}Reducer;
-
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case types.REQUEST_${constantCase(name)}: {
+      return {
+        ...state
+      }
+    }
+    case types.REQUEST_${constantCase(name)}_SUCCESS: {
+      return {
+        ...state
+      }
+    }
+    case types.REQUEST_${constantCase(name)}_ERROR: {
+      return {
+        ...state
+      }
+    }
+    default:
+    return state;
+  }
+}
 `
 	);
 };

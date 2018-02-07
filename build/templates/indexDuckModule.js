@@ -1,14 +1,10 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-var _firstToLower = require('../utils/firstToLower');
-
 var getTemplate = function getTemplate(name) {
-	var lowerCaseName = (0, _firstToLower.firstLetterToLower)(name);
-	return 'import ' + lowerCaseName + 'Reducer, { REDUCER_NAME as ' + lowerCaseName + 'ReducerName } from \'./ducks/' + name + 'Duck\';\nimport ' + name + ' from \'./containers/' + name + '\';\n\nexport { ' + name + ', ' + lowerCaseName + 'Reducer, ' + lowerCaseName + 'ReducerName };\n';
+	return "export { default } from './reducers';\nexport { default as types } from './types';\nexport { default as actions } from './actions';\nexport { default as thunks } from './thunks';\t\t\n";
 };
 
 exports.default = getTemplate;

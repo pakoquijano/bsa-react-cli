@@ -6,14 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
 	types: {
 		MODULE: 'module',
-		DUCKS: 'duckule',
+		DUCKS: 'ducks',
 		COMPONENT: 'component',
-		ATOM: 'atom',
-		MOLECULE: 'molecule',
-		ORGANISM: 'organism',
-		DUMB: 'dumb',
+		STATELESS: 'stateless',
 		PATH: 'path',
-		TEST_REDUCER: 'rtest'
+		CONTAINER: 'container'
 	}
 };
 //# sourceMappingURL=constants.js.map

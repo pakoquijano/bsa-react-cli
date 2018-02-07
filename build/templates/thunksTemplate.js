@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var getTemplate = function getTemplate(name) {
-	return "export { default } from './" + name + "';\n\t\t";
+	return "import actions from './actions';\n\nexport default {\n\n};\n";
 };
 
 exports.default = getTemplate;
-//# sourceMappingURL=indexComponent.js.map
+//# sourceMappingURL=thunksTemplate.js.map

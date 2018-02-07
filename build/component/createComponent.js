@@ -28,40 +28,35 @@ var _dumpTemplate = require('../templates/dumpTemplate');
 
 var _dumpTemplate2 = _interopRequireDefault(_dumpTemplate);
 
-var _componentTest = require('../templates/componentTest');
+var _containerTemplate = require('../templates/containerTemplate');
 
-var _componentTest2 = _interopRequireDefault(_componentTest);
+var _containerTemplate2 = _interopRequireDefault(_containerTemplate);
 
-var _snapshotTest = require('../templates/snapshotTest');
+var _messagesTemplate = require('../templates/messagesTemplate');
 
-var _snapshotTest2 = _interopRequireDefault(_snapshotTest);
+var _messagesTemplate2 = _interopRequireDefault(_messagesTemplate);
+
+var _stylesTemplate = require('../templates/stylesTemplate');
+
+var _stylesTemplate2 = _interopRequireDefault(_stylesTemplate);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var dirs = ['__tests__'];
-
 var handle = function handle(moduleName, path) {
-	var subDir = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
-	var dumb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+	var dumb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+	var container = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
 	if ((0, _isEmpty2.default)(path)) {
-		path = 'src/components';
+		path = !container ? 'src/components' : 'src/containers';
 	}
-	if (!(0, _isEmpty2.default)(subDir)) {
-		path += '/' + subDir;
-	}
-
 	path += '/' + moduleName;
-
-	dirs.forEach(function (directory) {
-		console.log('Creating ' + path + '/' + directory);
-		_shelljs2.default.mkdir('-p', path + '/' + directory);
-	});
+	console.log('Creating ' + path);
+	_shelljs2.default.mkdir('-p', '' + path);
 	(0, _createFile2.default)((0, _indexComponent2.default)(moduleName), path + '/index.js');
-	dumb && (0, _createFile2.default)((0, _dumpTemplate2.default)(moduleName), path + '/' + moduleName + '.js');
-	!dumb && (0, _createFile2.default)((0, _classTemplate2.default)(moduleName), path + '/' + moduleName + '.js');
-	(0, _createFile2.default)((0, _componentTest2.default)(moduleName), path + '/__tests__/' + moduleName + 'Test.js');
-	(0, _createFile2.default)((0, _snapshotTest2.default)(moduleName), path + '/__tests__/' + moduleName + 'SnapshotTest.js');
+	dumb && (0, _createFile2.default)((0, _dumpTemplate2.default)(moduleName), path + '/' + moduleName + '.jsx');
+	if (!dumb) container ? (0, _createFile2.default)((0, _containerTemplate2.default)(moduleName), path + '/container.js') : (0, _createFile2.default)((0, _classTemplate2.default)(moduleName), path + '/' + moduleName + '.jsx');
+	!container && (0, _createFile2.default)((0, _messagesTemplate2.default)(moduleName), path + '/messages.js');
+	!container && (0, _createFile2.default)((0, _stylesTemplate2.default)(moduleName), path + '/style.less');
 };
 
 exports.default = handle;

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/templates/actionsTemplate.js"],"names":["getTemplate"],"mappings":";;;;;AAAA,IAAMA,cAAc,SAAdA,WAAc,OAAQ;AAC3B;AAMA,CAPD;;kBASeA,W","file":"actionsTemplate.js","sourcesContent":["const getTemplate = name => {\n\treturn (`import types from './types';\n\nexport default {\n\n};\n`);\n};\n\nexport default getTemplate;\n"]}
