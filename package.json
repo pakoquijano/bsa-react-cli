@@ -1,6 +1,6 @@
 {
   "name": "bsa-react-cli",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "BSA Node CLI to generate and automate common tasks in react. Support component generation, containers, store features, Easily configurable to your own needs.",
   "repository": "https://github.com/pakoquijano/bsa-react-cli",
   "main": "./build/index.js",
