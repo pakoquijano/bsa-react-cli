@@ -56,7 +56,7 @@ var handle = function handle(moduleName, path) {
 	dumb && (0, _createFile2.default)((0, _dumpTemplate2.default)(moduleName), path + '/' + moduleName + '.jsx');
 	if (!dumb) container ? (0, _createFile2.default)((0, _containerTemplate2.default)(moduleName), path + '/container.js') : (0, _createFile2.default)((0, _classTemplate2.default)(moduleName), path + '/' + moduleName + '.jsx');
 	!container && (0, _createFile2.default)((0, _messagesTemplate2.default)(moduleName), path + '/messages.js');
-	!container && (0, _createFile2.default)((0, _stylesTemplate2.default)(moduleName), path + '/style.less');
+	!container && (0, _createFile2.default)((0, _stylesTemplate2.default)(moduleName), path + '/styles.less');
 };
 
 exports.default = handle;

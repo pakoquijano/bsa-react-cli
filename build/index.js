@@ -52,7 +52,7 @@ console.log(_chalk2.default.green(_figlet2.default.textSync('BSA MyST CLI')));
 
 var pjson = require('../package.json');
 
-_commander2.default.version(pjson.version).usage('with or without arguments :)').option('-c, --component [component]', 'name of your Component').option('-s, --stateless [stateless]', 'name of your dumb component').option('-o, --container [container]', 'name of your layout').option('-d, --ducks [ducks]', 'name of the duck').option('-p, --path      [path]', 'path for the generated structure [component]').parse(process.argv);
+_commander2.default.version(pjson.version).usage('with or without arguments :)').option('-c, --component [component]', 'name of your Component').option('-s, --stateless [stateless]', 'name of your dumb component').option('-o, --container [container]', 'name of your container').option('-d, --ducks 	 [ducks]', 'name of the duck feature').option('-p, --path      [path]', 'path for the generated structure [component]').parse(process.argv);
 
 var parseValues = (0, _co2.default)( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	var config, counter;
