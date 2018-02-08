@@ -18,7 +18,6 @@ ${name}.defaultProps = defaultProps;
 ${name}.propTypes = propTypes;
 
 export default ${name};
-
 `
 	);
 };

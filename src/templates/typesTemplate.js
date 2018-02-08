@@ -7,9 +7,9 @@ const REQUEST_${constantCase(name)}_SUCCESS = 'myst/${name}/${name}Success';
 const REQUEST_${constantCase(name)}_ERROR = 'myst/${name}/${name}Error';
 
 export default {
-	REQUEST_${constantCase(name)},
-	REQUEST_${constantCase(name)}_SUCCESS,
-	REQUEST_${constantCase(name)}_ERROR,
+  REQUEST_${constantCase(name)},
+  REQUEST_${constantCase(name)}_SUCCESS,
+  REQUEST_${constantCase(name)}_ERROR,
 };
 `
 	);

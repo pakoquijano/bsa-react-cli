@@ -8,22 +8,22 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case types.REQUEST_${constantCase(name)}: {
       return {
-        ...state
-      }
+        ...state,
+      };
     }
     case types.REQUEST_${constantCase(name)}_SUCCESS: {
       return {
-        ...state
-      }
+        ...state,
+      };
     }
     case types.REQUEST_${constantCase(name)}_ERROR: {
       return {
-        ...state
+        ...state,
       }
     }
     default:
-    return state;
-  }
+      return state;
+  };
 }
 `
 	);

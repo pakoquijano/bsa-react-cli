@@ -1,6 +1,6 @@
 const getTemplate = (name) => {
 	return (`import { connect } from 'react-redux';
-import CountryField from 'components/formFields/${name}';
+  import ${name} from 'components/${name}';
 
 function mapStateToProps(state) {
   return {
@@ -17,8 +17,7 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(name);
-
+)(${name});
 `);
 };
 

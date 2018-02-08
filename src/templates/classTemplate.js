@@ -1,5 +1,5 @@
 const getTemplate = (name) => {
-	return (`import React, { Component} from 'react';
+	return (`import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import messages from './messages';
 import './styles.less';
@@ -7,21 +7,21 @@ import './styles.less';
 const propTypes = {};
 const defaultProps = {};
 
-class ${name} extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+class prueba extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
   }
-
+  
 	render() {
-		return (<div>${name}</div>);
+		return (<div>prueba</div>);
 	}
 }
 
-${name}.defaultProps = defaultProps;
-${name}.propTypes = propTypes;
+prueba.defaultProps = defaultProps;
+prueba.propTypes = propTypes;
 
-export default ${name};
+export default prueba;
 `
 	);
 };

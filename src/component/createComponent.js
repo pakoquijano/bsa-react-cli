@@ -19,7 +19,7 @@ const handle = (moduleName, path, dumb = false, container = false) => {
 	dumb && createFile(dumpTemplate(moduleName), `${path}/${moduleName}.jsx`);
 	if (!dumb) container ? createFile(containerTemplate(moduleName),`${path}/container.js`) : createFile(classTemplate(moduleName), `${path}/${moduleName}.jsx`);
 	!container && createFile(messagesTemplate(moduleName), `${path}/messages.js`);
-	!container && createFile(stylesTemplate(moduleName), `${path}/style.less`);
+	!container && createFile(stylesTemplate(moduleName), `${path}/styles.less`);
 };
 
 export default handle;
