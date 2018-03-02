@@ -1,5 +1,5 @@
 const getTemplate = (name) => {
-	return (`@import (reference) '../../../../../theme.less';
+	return (`
 .c-${camelTokebab(name)} {
 
 }
