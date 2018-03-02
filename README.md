@@ -5,7 +5,7 @@ npm install -g bsa-react-cli
 
 This will add a bsa-cli into your terminal, command line and you will be able to call it from your project root.
  
-######Available comands:
+###### Available comands:
 Type bsa-cli --help
 
 ```
@@ -115,4 +115,4 @@ Plain js files with export a function. The function accepts the name received fr
 - This could be useful to created unit test files if we use some in the future ;)
 
 ## LICENCE 
-Copyright for portions of project Foo are held by Julius Koronci, 2017 react-bash-scritps as part of project Bar. All other copyright for project Foo are held by Francisco Quijano, 2018].
+Copyright for portions of project React-bash-scripts are held by Julius Koronci, 2017 react-bash-scritps. All other copyright for project bsa-react-cli are held by Francisco Quijano, 2018.
