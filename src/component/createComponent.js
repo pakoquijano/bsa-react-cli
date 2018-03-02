@@ -15,7 +15,7 @@ const handle = (moduleName, path, dumb = false, container = false) => {
 	path += `/${moduleName}`;
 	console.log(`Creating ${path}`);
 	shell.mkdir('-p', `${path}`);
-	createFile(indexTemplate(moduleName), `${path}/index.js`);
+	createFile(indexTemplate(container ? 'container' : moduleName), `${path}/index.js`);
 	dumb && createFile(dumpTemplate(moduleName), `${path}/${moduleName}.jsx`);
 	if (!dumb) container ? createFile(containerTemplate(moduleName),`${path}/container.js`) : createFile(classTemplate(moduleName), `${path}/${moduleName}.jsx`);
 	!container && createFile(messagesTemplate(moduleName), `${path}/messages.js`);

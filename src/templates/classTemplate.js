@@ -7,21 +7,21 @@ import './styles.less';
 const propTypes = {};
 const defaultProps = {};
 
-class prueba extends Component {
+class ${name} extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
   }
   
 	render() {
-		return (<div>prueba</div>);
+		return (<div>${name}</div>);
 	}
 }
 
-prueba.defaultProps = defaultProps;
-prueba.propTypes = propTypes;
+${name}.defaultProps = defaultProps;
+${name}.propTypes = propTypes;
 
-export default prueba;
+export default ${name};
 `
 	);
 };
